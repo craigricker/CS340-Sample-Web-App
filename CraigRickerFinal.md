@@ -1,6 +1,6 @@
-#CS340 Final Project
+# CS340 Final Project
 
-##Outline
+## Outline
 My final project is different than my proposed project in order to reudce the number of many to many relationships, and to increase interest in the project
 
 I will model a very simple company. The company is made up of a collection of buildings, employees, teams, and titles.
@@ -13,13 +13,13 @@ Teams have a name, a description, associated employees (MANY TO MANY) and an ass
 
 Buildings have a name, an address broken down into appropriate datafields (1st line, 2nd line, city, state and zip) and the year purchased.
 
-##ER Diagram
+## ER Diagram
 
-##Schema
+## Schema
 ![Final Project Schema](schema.png)
-##Data Definition Queries
+## Data Definition Queries
 
-CREATE TABLE title (
+'''CREATE TABLE title (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   description VARCHAR(255) NOT NULL,
   salary INT NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE works_on (
   PRIMARY KEY (eid, tid),
   FOREIGN KEY (eid) REFERENCES employee (id) ON DELETE RESTRICT ON UPDATE CASCADE,
   FOREIGN KEY (tid) REFERENCES team (id) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;'''
   
 
 ##Data Maniuplation Queries
