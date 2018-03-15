@@ -1,0 +1,50 @@
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<h1>All buildings:</h1>
+<h1>Handlebars JS Example</h1>
+{{#each foo}}
+{{this}}
+{{/each}}
+<table> 
+    <thead> 
+        <th>Building Name</th> 
+        <th>Line 1</th> 
+        <th>City</th>
+        <th>State</th>  
+        <th>Zip</th>
+        <th>Year Purchased</th>
+    </thead> 
+    <tbody> 
+        {{#each people}} 
+        <tr> 
+            <td>{{name}}</td> 
+            <td>{{ad_line1}}</td> 
+            <td>{{city}}</td> 
+            <td>{{state}}</td>
+            <td>{{zip}}</td>
+            <td>{{year_purchased}}</td>
+            <td><button onclick="deleteBuilding({{id}})">Delete</button></td>
+            <td><a href="/building/{{id}}">Update</a></td>
+        </tr> 
+        {{/each}} 
+    </tbody> 
+    <form id="addBuilding" action="/building" method="post">
+    Building name: <input type="text" name="name"><br>
+    Address line 1: <input type="text" name="ad_line1"><br>
+    Address line 2: <input type="text" name="ad_line2"><br>
+    City: <input type="text" name="city"><br>
+    State: <input type="text" name="state"><br>
+    Zip: <input type="text" name="zip"><br>
+    Year Purchased: <input type="text" name="year_purchased"><br>
+    <input type="submit" value="Submit">
+    </form>
+</table> 

@@ -1,0 +1,22 @@
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<h1>Update {{building.name}}:</h1>
+<form id="update-building" action="/people" method="post">
+    Name: <input type="text" name="name" value="{{building.name}}"><br>
+    Address Line 1: <input type="text" name="ad_line1" value="{{building.ad_line1}}"><br>
+    Address Line 2: <input type="text" name="ad_line2" value="{{building.ad_line2}}"><br>
+    City: <input type="text" name="city" value="{{building.city}}"><br>
+    State: <input type="text" name="state" value="{{building.state}}"><br>
+    Zip: <input type="text" name="zip" value="{{building.zip}}"><br>
+    Year Purchased<input type="text" name="year_purchased" value="{{building.year_purchased}}"><br>
+</form>
+<button onclick="updateBuilding({{building.id}})">Update</button>
