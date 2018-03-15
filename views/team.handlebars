@@ -1,39 +1,134 @@
-<head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<html>
+    <head>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+            <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    </head>
+    <body>
+        <div>
+            <div>
+                <nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">Home</a></li>
+                        <li class="active"><a href="/team">team<span class="sr-only">(current)</span></a></li>
+                        <li><a href="/building">Buildings</a></li>
+                        <li><a href="/employee">Employees</a></li>
+                        <li><a href="/title">Titles</a></li>
+                        <li><a href="/belongs">Team/Employee</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <br/>
+            
+            <!-- Put contents here -->
+    
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-</head>
-<form id="addTeam" action="/team" method="post">
-Team name: <input type="text" name="name"><br>
-Description: <input type="text" name="description"><br>
-Building: <select name="building"> 
-    {{#each buildings}}
-    <option value="{{id}}">{{allBuildName}}</option>
-    {{/each}}
-</select><br>
-<input type="submit" value="Submit">
-</form>
-<p></p>
-<h1>All teams:</h1>
-<table> 
-    <thead> 
-        <th>Team Name</th> 
-        <th>Description</th> 
-        <th>Building</th>
-    </thead> 
-    <tbody> 
-        {{#each people}} 
-        <tr> 
-            <td>{{name}}</td> 
-            <td>{{description}}</td> 
-            <td>{{buildName}}</td> 
-        </tr> 
-        {{/each}} 
-    </tbody> 
-</table> 
+    
+    
+    <form class="form-horizontal", id="addTeam" action="/team" method="post">
+    <fieldset>
+
+    <!-- Form Name -->
+    <legend>Add New Team</legend>
+    <p>To enter new team, fill out information below and hit submit</p>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="name">Team Name</label>  
+      <div class="col-md-4">
+      <input id="name" name="name" type="text" placeholder="Enter name here" class="form-control input-md" required="">
+        
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="description">Description</label>  
+      <div class="col-md-4">
+      <input id="description" name="description" type="text" placeholder="Enter optional description" class="form-control input-md">
+        
+      </div>
+    </div>
+
+    <!-- Select Basic -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="building">Select Building</label>
+      <div class="col-md-4">
+        <select id="building" name="building" class="form-control">
+                {{#each buildings}}
+        <option value="{{id}}">{{allBuildName}}</option>
+        {{/each}}
+        </select>
+      </div>
+    </div>
+    
+    <!-- Button -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="singlebutton"></label>
+      <div class="col-md-4">
+        <input class="btn btn-primary" type="submit" value="Submit">
+      </div>
+    </div>
+    
+    
+    </fieldset>
+    </form>
+
+    
+    <!--Filter text -->
+    <form class="form-horizontal",id="filterTeam" action="/team/filter" method="post">
+    <fieldset>
+
+    <!-- Form Name -->
+    <legend>Filter Teams by Building</legend>
+
+    
+    <!-- Select Basic -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="building">Select Building</label>
+      <div class="col-md-4">
+        <select id="building" name="equalTo" class="form-control">
+                {{#each buildings}}
+        <option value="{{id}}">{{allBuildName}}</option>
+        {{/each}}
+        </select>
+      </div>
+    </div>
+    
+    <!-- Button -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="singlebutton"></label>
+      <div class="col-md-4">
+        <input class="btn btn-primary" type="submit" value="Submit">
+      </div>
+    </div>
+    
+    
+    </fieldset>
+    </form>
+    
+
+    
+    
+    
+    
+    <!--Table HTML -->
+    <h1>{{startSource}} Teams:</h1>
+    <table class = "table"> 
+        <thead> 
+            <th>Team Name</th> 
+            <th>Description</th> 
+            <th>Building</th>
+        </thead> 
+        <tbody> 
+            {{#each people}} 
+            <tr> 
+                <td>{{name}}</td> 
+                <td>{{description}}</td> 
+                <td>{{buildName}}</td> 
+            </tr> 
+            {{/each}} 
+        </tbody> 
+    </table> 
+    </body>
+</html>
