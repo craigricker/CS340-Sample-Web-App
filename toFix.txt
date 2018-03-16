@@ -1,0 +1,6 @@
+Schema team/employee many to many pointing to title instead of team
+Update mark down text with new sql entry
+
+Fix delete on building - it is required, perhaps just delete many to many?
+
+Added "join time" for many to many, update schema etc

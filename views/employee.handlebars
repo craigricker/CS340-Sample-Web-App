@@ -3,6 +3,8 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
             <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
+        <script src="handlebars/dist/handlebars.min.js"></script>
+        <script src="handlebars-intl/dist/handlebars-intl.min.js"></script>
     </head>
     <body>
         <div>
@@ -10,9 +12,9 @@
                 <nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
                     <ul class="nav navbar-nav">
                         <li><a href="/">Home</a></li>
-                        <li class="active"><a href="/team">Team<span class="sr-only">(current)</span></a></li>
-                        <li><a href="/building">Buildings</a></li>
-                        <li><a href="/employee">Employees</a></li>
+                        <li><a href="/team">Team</a></li>
+                        <li><a href="/building">Buildings<span class="sr-only">(current)</span></a></li>
+                        <li class="active"><a href="/employee">Employees</a></li>
                         <li><a href="/title">Titles</a></li>
                         <li><a href="/workson">Team/Employee</a></li>
                     </ul>
@@ -25,32 +27,50 @@
 
     
     
-    <form class="form-horizontal", id="addTeam" action="/team" method="post">
+    <form class="form-horizontal", id="addEmployee" action="/employee" method="post">
     <fieldset>
 
     <!-- Form Name -->
-    <legend>Add New Team</legend>
-    <p>To enter new team, fill out information below and hit submit</p>
+    <legend>Add New Employee</legend>
+    <p>To enter new employee, fill out information below and hit submit</p>
 
-    <!-- Text input-->
+    <!-- Title f_name Input-->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="name">Team Name</label>  
+      <label class="col-md-4 control-label" for="f_name">First Name</label>  
       <div class="col-md-4">
-      <input id="name" name="name" type="text" placeholder="Enter name here" class="form-control input-md" required="">
+      <input id="f_name" name="f_name" type="text" placeholder="Enter First Name here" class="form-control input-md" required="">
         
       </div>
     </div>
 
-    <!-- Text input-->
+    <!-- Last Name input-->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="description">Description</label>  
+      <label class="col-md-4 control-label" for="l_name">Last Name</label>  
       <div class="col-md-4">
-      <input id="description" name="description" type="text" placeholder="Enter optional description" class="form-control input-md">
+      <input id="l_name" name="l_name" type="text" placeholder="Enter Last Name here" class="form-control input-md">
         
       </div>
     </div>
-
-    <!-- Select Basic -->
+    
+    <!-- SSN-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="ssn">SSN</label>  
+      <div class="col-md-4">
+      <input id="ssn" name="ssn" type="text" placeholder="SSN" class="form-control input-md">
+        
+      </div>
+    </div>
+    
+    <!-- Phone Number -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="phone">Phone Number</label>  
+      <div class="col-md-4">
+      <input id="phone" name="phone" type="text" placeholder="Phone Number" class="form-control input-md">
+        
+      </div>
+    </div>
+    
+    <!-- Building Select-->
     <div class="form-group">
       <label class="col-md-4 control-label" for="building">Select Building</label>
       <div class="col-md-4">
@@ -61,7 +81,7 @@
         </select>
       </div>
     </div>
-    
+        
     <!-- Button -->
     <div class="form-group">
       <label class="col-md-4 control-label" for="singlebutton"></label>
@@ -76,11 +96,11 @@
 
     
     <!--Filter text -->
-    <form class="form-horizontal",id="filterTeam" action="/team/filter" method="post">
+    <form class="form-horizontal",id="filterEmployee" action="/employee/filter" method="post">
     <fieldset>
 
     <!-- Form Name -->
-    <legend>Filter Teams by Building</legend>
+    <legend>Filter Employees by Building</legend>
 
     
     <!-- Select Basic -->
@@ -106,29 +126,31 @@
     
     </fieldset>
     </form>
-    
 
     
     
     
-    
-    <!--Table HTML -->
-    <h1>{{startSource}} Teams:</h1>
-    <table class = "table"> 
+    <h1>{{startSource}} Employees:</h1>
+    <table class="table"> 
         <thead> 
-            <th>Team Name</th> 
-            <th>Description</th> 
+            <th>First Name</th> 
+            <th>Last Name</th> 
+            <th>SSN</th>
+            <th>Phone></th>
             <th>Building</th>
         </thead> 
         <tbody> 
             {{#each people}} 
             <tr> 
-                <td>{{name}}</td> 
-                <td>{{description}}</td> 
-                <td>{{buildName}}</td> 
+                <td>{{f_name}}</td> 
+                <td>{{l_name}}</td> 
+                <td>{{ssn}}</td>
+                <td>{{phone}}</td>
+                <td>{{buildName}}</td>
             </tr> 
             {{/each}} 
         </tbody> 
+
     </table> 
     </body>
 </html>

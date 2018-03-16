@@ -3,6 +3,8 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
             <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
+        <script src="handlebars/dist/handlebars.min.js"></script>
+        <script src="handlebars-intl/dist/handlebars-intl.min.js"></script>
     </head>
     <body>
         <div>
@@ -10,11 +12,11 @@
                 <nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
                     <ul class="nav navbar-nav">
                         <li><a href="/">Home</a></li>
-                        <li class="active"><a href="/team">Team<span class="sr-only">(current)</span></a></li>
+                        <li><a href="/team">Team</a></li>
                         <li><a href="/building">Buildings</a></li>
                         <li><a href="/employee">Employees</a></li>
                         <li><a href="/title">Titles</a></li>
-                        <li><a href="/workson">Team/Employee</a></li>
+                        <li class="active"><a href="/workson">Team/Employee<span class="sr-only">(current)</span></a></li>
                     </ul>
                 </nav>
             </div>
@@ -25,43 +27,35 @@
 
     
     
-    <form class="form-horizontal", id="addTeam" action="/team" method="post">
+    <form class="form-horizontal", id="addWorksOn" action="/workson" method="post">
     <fieldset>
 
     <!-- Form Name -->
-    <legend>Add New Team</legend>
-    <p>To enter new team, fill out information below and hit submit</p>
+    <legend>Add New Team/Employee Relationship</legend>
+    <p>To to enter new relationship, fill out information below and hit submit</p>
 
-    <!-- Text input-->
+    <!-- Person Select-->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="name">Team Name</label>  
-      <div class="col-md-4">
-      <input id="name" name="name" type="text" placeholder="Enter name here" class="form-control input-md" required="">
-        
-      </div>
-    </div>
-
-    <!-- Text input-->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="description">Description</label>  
-      <div class="col-md-4">
-      <input id="description" name="description" type="text" placeholder="Enter optional description" class="form-control input-md">
-        
-      </div>
-    </div>
-
-    <!-- Select Basic -->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="building">Select Building</label>
+      <label class="col-md-4 control-label" for="first_name">Select Employee</label>
       <div class="col-md-4">
         <select id="building" name="building" class="form-control">
-                {{#each buildings}}
-        <option value="{{id}}">{{allBuildName}}</option>
+        {{#each employees}}
+        <option value="{{id}}">{{employeeName}}</option>
         {{/each}}
         </select>
       </div>
     </div>
-    
+
+    <!-- Team Select-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="l_name">Last Name</label>  
+      <div class="col-md-4">
+      <input id="l_name" name="l_name" type="text" placeholder="Enter Last Name here" class="form-control input-md">
+        
+      </div>
+    </div>
+
+
     <!-- Button -->
     <div class="form-group">
       <label class="col-md-4 control-label" for="singlebutton"></label>
@@ -76,11 +70,11 @@
 
     
     <!--Filter text -->
-    <form class="form-horizontal",id="filterTeam" action="/team/filter" method="post">
+    <form class="form-horizontal",id="filterEmployee" action="/employee/filter" method="post">
     <fieldset>
 
     <!-- Form Name -->
-    <legend>Filter Teams by Building</legend>
+    <legend>Filter Employees by Building</legend>
 
     
     <!-- Select Basic -->
@@ -106,29 +100,29 @@
     
     </fieldset>
     </form>
-    
 
     
     
     
-    
-    <!--Table HTML -->
-    <h1>{{startSource}} Teams:</h1>
-    <table class = "table"> 
+    <h1>{{startSource}} Employees:</h1>
+    <table class="table"> 
         <thead> 
-            <th>Team Name</th> 
-            <th>Description</th> 
-            <th>Building</th>
+            <th>First Name</th> 
+            <th>Last Name</th> 
+            <th>Team</th>
+            <th>Join Date</th>
         </thead> 
         <tbody> 
             {{#each people}} 
             <tr> 
-                <td>{{name}}</td> 
-                <td>{{description}}</td> 
-                <td>{{buildName}}</td> 
+                <td>{{f_name}}</td> 
+                <td>{{l_name}}</td> 
+                <td>{{name}}</td>
+                <td>{{join_date}}</td>
             </tr> 
             {{/each}} 
         </tbody> 
+
     </table> 
     </body>
 </html>
