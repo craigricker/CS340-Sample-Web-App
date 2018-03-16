@@ -18,6 +18,10 @@ app.set('port', process.argv[2]);
 app.set('mysql', mysql);
 
 app.use('/people', require('./people.js'));
+app.use('/building', require('./building.js'));
+app.use('/team', require('./team.js'));
+
+
 
 app.use(function(req,res){
   res.status(404);

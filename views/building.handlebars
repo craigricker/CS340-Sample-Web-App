@@ -1,50 +1,184 @@
-<head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-</head>
-<h1>All buildings:</h1>
-<h1>Handlebars JS Example</h1>
-{{#each foo}}
-{{this}}
-{{/each}}
-<table> 
-    <thead> 
-        <th>Building Name</th> 
-        <th>Line 1</th> 
-        <th>City</th>
-        <th>State</th>  
-        <th>Zip</th>
-        <th>Year Purchased</th>
-    </thead> 
-    <tbody> 
-        {{#each people}} 
-        <tr> 
-            <td>{{name}}</td> 
-            <td>{{ad_line1}}</td> 
-            <td>{{city}}</td> 
-            <td>{{state}}</td>
-            <td>{{zip}}</td>
-            <td>{{year_purchased}}</td>
-            <td><button onclick="deleteBuilding({{id}})">Delete</button></td>
-            <td><a href="/building/{{id}}">Update</a></td>
-        </tr> 
-        {{/each}} 
-    </tbody> 
-    <form id="addBuilding" action="/building" method="post">
-    Building name: <input type="text" name="name"><br>
-    Address line 1: <input type="text" name="ad_line1"><br>
-    Address line 2: <input type="text" name="ad_line2"><br>
-    City: <input type="text" name="city"><br>
-    State: <input type="text" name="state"><br>
-    Zip: <input type="text" name="zip"><br>
-    Year Purchased: <input type="text" name="year_purchased"><br>
-    <input type="submit" value="Submit">
+
+
+<html>
+    <head>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+            <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    </head>
+    <body>
+        <div>
+            <div>
+                <nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/team">Team</a></li>
+                        <li class="active"><a href="/building">Buildings<span class="sr-only">(current)</span></a></li>
+                        <li><a href="/employee">Employees</a></li>
+                        <li><a href="/title">Titles</a></li>
+                        <li><a href="/belongs">Team/Employee</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <br/>
+            
+            <!-- Put contents here -->
+    
+
+    
+    
+    <form class="form-horizontal", id="addBuilding" action="/building" method="post">
+    <fieldset>
+    
+
+
+
+
+
+    <!-- Form Name -->
+    <legend>Add New Team</legend>
+    <p>To enter new team, fill out information below and hit submit</p>
+
+    <!-- Building Name Input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="name">Building Name</label>  
+      <div class="col-md-4">
+      <input id="name" name="name" type="text" placeholder="Enter name here" class="form-control input-md" required="">
+        
+      </div>
+    </div>
+
+    <!-- Address line 1 input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="ad_line1">Adress Line 1</label>  
+      <div class="col-md-4">
+      <input id="ad_line1" name="ad_line1" type="text" placeholder="Enter address line 1" class="form-control input-md">
+        
+      </div>
+    </div>
+    
+    <!-- Adress Line 2 input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="ad_line2">Adress Line 2</label>  
+      <div class="col-md-4">
+      <input id="ad_line2" name="ad_line2" type="text" placeholder="Enter address line 2" class="form-control input-md">
+        
+      </div>
+    </div>
+    
+    <!-- City input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="city">City</label>  
+      <div class="col-md-4">
+      <input id="city" name="city" type="text" placeholder="Enter City" class="form-control input-md">
+        
+      </div>
+    </div>
+
+    <!-- State input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="state">State</label>  
+      <div class="col-md-4">
+      <input id="state" name="state" type="text" placeholder="Enter State" class="form-control input-md">
+        
+      </div>
+    </div>
+    
+    <!-- Zip input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="zip">Zip</label>  
+      <div class="col-md-4">
+      <input id="zip" name="zip" type="text" placeholder="Enter zipcode" class="form-control input-md">
+        
+      </div>
+    </div>
+
+    <!-- Year Purchased input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="year_purchased">Year Purchased</label>  
+      <div class="col-md-4">
+      <input id="year_purchased" name="year_purchased" type="text" placeholder="Enter year purchased" class="form-control input-md">
+        
+      </div>
+    </div>
+
+    
+    <!-- Button -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="singlebutton"></label>
+      <div class="col-md-4">
+        <input class="btn btn-primary" type="submit" value="Submit">
+      </div>
+    </div>
+    
+    
+    </fieldset>
     </form>
-</table> 
+
+    
+    <!--Filter text -->
+    <form class="form-horizontal",id="filterTeam" action="/team/filter" method="post">
+    <fieldset>
+
+    <!-- Form Name -->
+    <legend>Filter Buildings by State</legend>
+
+    
+    <!-- Select Basic -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="building">Select Building</label>
+      <div class="col-md-4">
+        <select id="building" name="equalTo" class="form-control">
+                {{#each buildings}}
+        <option value="{{id}}">{{allBuildName}}</option>
+        {{/each}}
+        </select>
+      </div>
+    </div>
+    
+    <!-- Button -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="singlebutton"></label>
+      <div class="col-md-4">
+        <input class="btn btn-primary" type="submit" value="Submit">
+      </div>
+    </div>
+    
+    
+    </fieldset>
+    </form>
+    
+
+    
+    
+    
+    
+    <table> 
+        <thead> 
+            <th>Building Name</th> 
+            <th>Line 1</th> 
+            <th>City</th>
+            <th>State</th>  
+            <th>Zip</th>
+            <th>Year Purchased</th>
+        </thead> 
+        <tbody> 
+            {{#each people}} 
+            <tr> 
+                <td>{{name}}</td> 
+                <td>{{ad_line1}}</td> 
+                <td>{{city}}</td> 
+                <td>{{state}}</td>
+                <td>{{zip}}</td>
+                <td>{{year_purchased}}</td>
+                <td><button onclick="deleteBuilding({{id}})">Delete</button></td>
+                <td><a href="/building/{{id}}">Update</a></td>
+            </tr> 
+            {{/each}} 
+        </tbody> 
+
+    </table> 
+    </body>
+</html>
