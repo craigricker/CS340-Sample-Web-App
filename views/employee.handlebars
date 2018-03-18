@@ -17,6 +17,7 @@
                         <li class="active"><a href="/employee">Employees</a></li>
                         <li><a href="/title">Titles</a></li>
                         <li><a href="/workson">Team/Employee</a></li>
+                        <li><a href="/computer">Computers</a></li>
                     </ul>
                 </nav>
             </div>
@@ -71,6 +72,18 @@
     </div>
     
     <!-- Building Select-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="computer">Select Computer</label>
+      <div class="col-md-4">
+        <select id="computer" name="computer" class="form-control">
+        {{#each computers}}
+        <option value="{{id}}">{{name}}, {{serial}}</option>
+        {{/each}}
+        </select>
+      </div>
+    </div>
+    
+    <!-- Computer Select-->
     <div class="form-group">
       <label class="col-md-4 control-label" for="building">Select Building</label>
       <div class="col-md-4">
@@ -136,7 +149,7 @@
             <th>First Name</th> 
             <th>Last Name</th> 
             <th>SSN</th>
-            <th>Phone></th>
+            <th>Phone</th>
             <th>Building</th>
         </thead> 
         <tbody> 

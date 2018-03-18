@@ -6,6 +6,7 @@
     <head>
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
             <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <title>CS340 Final Project</title>
 
     </head>
     <body>
@@ -25,6 +26,7 @@
             <br/>
             
             <!-- Put contents here -->
+            
     
 
     
@@ -38,8 +40,8 @@
 
 
     <!-- Form Name -->
-    <legend>Add New Team</legend>
-    <p>To enter new team, fill out information below and hit submit</p>
+    <legend>Add New Computer</legend>
+    <p>To enter new computer, fill out information below and hit submit</p>
 
     <!-- Building Name Input-->
     <div class="form-group">
@@ -119,22 +121,19 @@
 
     
     <!--Filter text -->
-    <form class="form-horizontal",id="filterTeam" action="/team/filter" method="post">
+    <form class="form-horizontal",id="filterTeam" action="/building/filter" method="post">
     <fieldset>
 
     <!-- Form Name -->
-    <legend>Filter Buildings by State</legend>
+    <legend>Filter Buildings by Year Purchased</legend>
 
     
     <!-- Select Basic -->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="building">Select Building</label>
+      <label class="col-md-4 control-label" for="year_purchased">All buildings after:</label>  
       <div class="col-md-4">
-        <select id="building" name="equalTo" class="form-control">
-                {{#each buildings}}
-        <option value="{{id}}">{{allBuildName}}</option>
-        {{/each}}
-        </select>
+      <input id="year_purchased" name="year_purchased" type="text" placeholder="Year purchased" class="form-control input-md">
+        
       </div>
     </div>
     
@@ -163,7 +162,6 @@
             <th>State</th>  
             <th>Zip</th>
             <th>Year Purchased</th>
-            <th>Delete</th>
             <th>Update</th>
         </thead> 
         <tbody> 
@@ -175,7 +173,6 @@
                 <td>{{state}}</td>
                 <td>{{zip}}</td>
                 <td>{{year_purchased}}</td>
-                <td><button onclick="deleteBuilding({{id}})">Delete</button></td>
                 <td><a href="/building/{{id}}">Update</a></td>
             </tr> 
             {{/each}} 

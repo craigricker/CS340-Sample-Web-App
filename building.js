@@ -25,6 +25,21 @@ module.exports = function(){
             complete();
         });
     }
+    
+    function getBuildingsFilt(res, req, mysql, context, complete){
+        console.log("In get building filtered");
+        console.log(req.body);      
+        var sql = "SELECT * FROM building WHERE year_purchased > ?";
+        var inserts = [req.body.year_purchased];
+        mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.people = results;
+            complete();
+        });
+    }
 
     /*Display all people. Requires web based javascript to delete users with AJAX*/
 
@@ -115,6 +130,21 @@ module.exports = function(){
             }
         })
     })
+    
+    router.post('/filter', function(req, res){
+        var callbackCount = 0;
+        var context = {};
+        var mysql = req.app.get('mysql');
+        getBuildingsFilt(res, req, mysql, context, complete);
+        context.startSource = "Filtered"
+        function complete(){
+            callbackCount++;
+            if(callbackCount >= 1){
+                console.log(context);
+                res.render('building', context);
+            }
+        }
+    });
 
     return router;
 }();

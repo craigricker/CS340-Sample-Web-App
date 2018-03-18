@@ -1,10 +1,13 @@
+
+
+
+
 <html>
     <head>
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
             <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <title>CS340 Final Project</title>
 
-        <script src="handlebars/dist/handlebars.min.js"></script>
-        <script src="handlebars-intl/dist/handlebars-intl.min.js"></script>
     </head>
     <body>
         <div>
@@ -16,50 +19,61 @@
                         <li><a href="/building">Buildings</a></li>
                         <li><a href="/employee">Employees</a></li>
                         <li><a href="/title">Titles</a></li>
-                        <li class="active"><a href="/workson">Team/Employee<span class="sr-only">(current)</span></a></li>
-                        <li><a href="/computer">Computers</a></li>
+                        <li><a href="/workson">Team/Employee</a></li>
+                        <li class="active"><a href="/computer">Computers<span class="sr-only">(current)</span></a></li>
                     </ul>
                 </nav>
             </div>
             <br/>
             
             <!-- Put contents here -->
+            
     
 
     
     
-    <form class="form-horizontal", id="addWorksOn" action="/workson" method="post">
+    <form class="form-horizontal", id="addCommputer" action="/computer" method="post">
     <fieldset>
+    
+
+
+
+
 
     <!-- Form Name -->
-    <legend>Add New Team/Employee Relationship</legend>
-    <p>To to enter new relationship, fill out information below and hit submit</p>
+    <legend>Add New Computer</legend>
+    <p>To enter new computer, fill out information below and hit submit</p>
 
-    <!-- Person Select-->
+    <!-- Name Input-->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="first_name">Select Employee</label>
+      <label class="col-md-4 control-label" for="name">Enter computer name</label>  
       <div class="col-md-4">
-        <select id="employeeNew" name="employeeNew" class="form-control">
-        {{#each employees}}
-        <option value="{{id}}">{{employeeNames}}</option>
-        {{/each}}
-        </select>
+      <input id="name" name="name" type="text" placeholder="Enter computer name here" class="form-control input-md" required="">
+        
       </div>
     </div>
 
-    <!-- Team Select-->
+    <!-- Type input-->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="team">Select Team</label>
+      <label class="col-md-4 control-label" for="type">Operating system</label>  
       <div class="col-md-4">
-        <select id="team" name="team" class="form-control">
-        {{#each teams}}
-        <option value="{{id}}">{{teamName}}</option>
-        {{/each}}
-        </select>
+      <input id="type" name="type" type="text" placeholder="OS" class="form-control input-md">
+        
+      </div>
+    </div>
+    
+    <!-- Serial-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="serial">Enter serial code</label>  
+      <div class="col-md-4">
+      <input id="serial" name="serial" type="text" placeholder="Serial" class="form-control input-md">
+        
       </div>
     </div>
 
 
+
+    
     <!-- Button -->
     <div class="form-group">
       <label class="col-md-4 control-label" for="singlebutton"></label>
@@ -74,22 +88,19 @@
 
     
     <!--Filter text -->
-    <form class="form-horizontal",id="filterWorkson" action="/workson/filter" method="post">
+    <form class="form-horizontal",id="filterComputer" action="/computer/filter" method="post">
     <fieldset>
 
     <!-- Form Name -->
-    <legend>Filter by Team Name</legend>
+    <legend>Filter Computers by Serials</legend>
 
     
     <!-- Select Basic -->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="">Select Team Name</label>
+      <label class="col-md-4 control-label" for="serial">All serial #'s larger than:</label>  
       <div class="col-md-4">
-        <select id="filterTeam" name="filterTeam" class="form-control">
-        {{#each teams}}
-        <option value="{{id}}">{{teamName}}</option>
-        {{/each}}
-        </select>
+      <input id="serial" name="serial" type="text" placeholder="Enter Int of serial" class="form-control input-md">
+        
       </div>
     </div>
     
@@ -104,27 +115,26 @@
     
     </fieldset>
     </form>
+    
 
     
     
     
-    <h1>{{startSource}} Team/Employees:</h1>
+    
     <table class="table"> 
         <thead> 
-            <th>First Name</th> 
-            <th>Last Name</th> 
-            <th>Team</th>
-            <th>Join Date</th>
-            <th>Delete Entry</th>
+            <th>Name</th> 
+            <th>Type</th> 
+            <th>Serial</th>
+            <th>Delete</th>
         </thead> 
         <tbody> 
             {{#each people}} 
             <tr> 
-                <td>{{f_name}}</td> 
-                <td>{{l_name}}</td> 
-                <td>{{name}}</td>
-                <td>{{join_date}}</td>
-                <td><button onclick="deleteWorkson({{id}})">Delete</button></td>
+                <td>{{name}}</td> 
+                <td>{{type}}</td> 
+                <td>{{serial}}</td> 
+                <td><button onclick="deleteComputer({{id}})">Delete</button></td>
             </tr> 
             {{/each}} 
         </tbody> 

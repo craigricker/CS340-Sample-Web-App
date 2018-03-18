@@ -18,12 +18,17 @@ app.set('view engine', 'handlebars');
 app.set('port', process.argv[2]);
 app.set('mysql', mysql);
 
-app.use('/people', require('./people.js'));
+
 app.use('/building', require('./building.js'));
 app.use('/team', require('./team.js'));
 app.use('/title', require('./titles.js'));
 app.use('/employee', require('./employee.js'));
 app.use('/workson', require('./workson.js'));
+app.use('/computer', require('./computer.js'));
+
+app.get('/',function(req,res){
+        res.render("home");
+});
 
 
 app.use(function(req,res){
