@@ -5,6 +5,8 @@ My final project is different than my proposed project in order to reudce the nu
 
 I will model a very simple company. The company is made up of a collection of buildings, computers, employees, and teams.
 
+## Database Outline
+
 Employees can have a phone number, can have a computer, must havea first/last name/SSN, and they must work in a single building.
 
 Computers must have a name, can have a type description, and can have a serial number. Multiple people can use the same computer.
@@ -27,6 +29,13 @@ CREATE TABLE computer (
     type VARCHAR(255),
     serial INT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE title (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  description VARCHAR(255) NOT NULL,
+  salary INT NOT NULL,
+  min_years INT
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE building (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -56,8 +65,8 @@ CREATE TABLE employee (
   phone VARCHAR(255),
   bid INT NOT NULL,
   computer INT,
-  FOREIGN KEY (computer) REFERENCES computer (id),
-  FOREIGN KEY (bid) REFERENCES building (id) ON DELETE RESTRICT ON UPDATE CASCADE,
+  FOREIGN KEY (computer) REFERENCES computer (id) ON DELETE SET NULL,
+  FOREIGN KEY (bid) REFERENCES building (id) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE works_on (
@@ -69,6 +78,8 @@ CREATE TABLE works_on (
   FOREIGN KEY (eid) REFERENCES employee (id) ON DELETE RESTRICT ON UPDATE CASCADE,
   FOREIGN KEY (tid) REFERENCES team (id) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 ```
   
 
@@ -100,12 +111,8 @@ SELECT * FROM building WHERE year_purchased > [yearInput]
 ```
 
 
-
-\
-
-
 ## Project link
-My final project can be found at this link.
+My final project can be found at [this link.](http://flip3.engr.oregonstate.edu:5416)
 
 ## Thank you
 I wanted to thank botht the professor, and all the hard working TA's. I think it is important to acknolwedge that the skeleton of this project was forked from the [Professor's example code](https://github.com/wolfordj/CS340-Sample-Web-App).

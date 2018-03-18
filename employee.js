@@ -8,7 +8,6 @@ module.exports = function(){
                 res.write(JSON.stringify(error));
                 res.end();
             }
-            results["0"] = "None";
             context.people = results;
             complete();
         });
@@ -21,6 +20,10 @@ module.exports = function(){
                 res.write(JSON.stringify(error));
                 res.end();
             }
+            // results["0"] = "None";
+            results.push({"id": 0, "name": "No Computer"});
+            console.log("The results are");
+            console.log(results);
             context.computers = results;
             complete();
         });
