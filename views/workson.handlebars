@@ -5,6 +5,19 @@
 
         <script src="handlebars/dist/handlebars.min.js"></script>
         <script src="handlebars-intl/dist/handlebars-intl.min.js"></script>
+    <script type="text/javascript">
+        function deleteWorkson(id){
+            console.log("In public script");
+            console.log(id);
+            $.ajax({
+                url: '/workson/' + id,
+                type: 'DELETE',
+                success: function(result){
+                    window.location.reload(true);
+                }
+            })
+        };
+    </script>
     </head>
     <body>
         <div>

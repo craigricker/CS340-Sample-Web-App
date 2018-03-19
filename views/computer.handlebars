@@ -8,6 +8,18 @@
             <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <title>CS340 Final Project</title>
 
+    <script type="text/javascript">
+    function deleteComputer(id){
+    console.log("In delte computer ajax stuff, id is: " + id);
+    $.ajax({
+        url: '/computer/' + id,
+        type: 'DELETE',
+        success: function(result){
+            window.location.reload(true);
+        }
+      })
+    };
+</script>
     </head>
     <body>
         <div>
